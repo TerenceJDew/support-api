@@ -10,12 +10,16 @@ from pymongo.collection import ReturnDocument
 
 app = Flask(__name__)
 CORS(app)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/bcss_survey"
+app.config[
+    "MONGO_URI"
+] = "mongodb://root:rooter@vrtual-shard-00-00.wer4d.mongodb.net:27017,vrtual-shard-00-01.wer4d.mongodb.net:27017,vrtual-shard-00-02.wer4d.mongodb.net:27017/bcss_survey?ssl=true&replicaSet=Vrtual-shard-0&authSource=admin&retryWrites=true&w=majority"
 mongo = PyMongo(app)
+app.config.from_pyfile("settings.py")
 
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
-app.config["MAIL_USERNAME"] = "scobigcorp878@gmail.com"
+# // These are fake emails
+app.config["MAIL_USERNAME"] = "scoopsshopbigcorp@gmail.com"
 app.config["MAIL_PASSWORD"] = "Orchid20?!?!"
 app.config["MAIL_USE_TLS"] = False
 app.config["MAIL_USE_SSL"] = True
@@ -24,7 +28,7 @@ mail = Mail(app)
 
 def send_mail(to, subject, template, **kwargs):
     msg = Message(
-        subject=subject, sender="bcscoopsshop@gmail.com", recipients=to.split()
+        subject=subject, sender="scoopsshopbigcorp@gmail.com", recipients=to.split()
     )
     msg.body = "Please Enjoy Your Free Coupon from BC Scoop Shop"
     msg.html = render_template(template, **kwargs)
