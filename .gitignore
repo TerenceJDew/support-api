@@ -1,0 +1,5 @@
+*.log
+*.pot
+__pycache__/
+venv/
+.vscode/
