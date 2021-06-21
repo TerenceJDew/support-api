@@ -1,5 +1,5 @@
 # support-api
-> This is the API for the Iterview Take home Assignment. 
+> This is the API for the Interview Take home Assignment. 
 
 This utilizes a SMTP server and a fake email to send the free coupon found in templates and an a MongoDB cloud instance in order to store 
 and serve user submission data. I wanted to send over a Docker container but the Flask routine kept failing on installs. 
